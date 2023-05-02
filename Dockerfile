@@ -16,8 +16,8 @@ RUN apt-get update && apt-get install -y \
  && rm wkhtmltox_0.12.6-1.buster_amd64.deb
 
 # Копирование проекта в контейнер
-COPY . /school1
-WORKDIR /school1
+COPY . /school
+WORKDIR /school
 
 # Установка зависимостей Python
 RUN pip install -r requirements.txt
