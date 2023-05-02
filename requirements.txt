@@ -1,0 +1,6 @@
+sqlite3
+aiogram
+os
+datetime
+reportlab
+pdfkit
