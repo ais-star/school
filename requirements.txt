@@ -1,5 +1,5 @@
-aiogram
+aiogram==2.23.1
 os
 datetime
-reportlab
-pdfkit
+reportlab==3.6.12
+pdfkit==1.0.0
