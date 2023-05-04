@@ -1,29 +1,36 @@
-FROM debian:buster-slim
+FROM ubuntu:20.04
 
-# Обновить пакетный менеджер и установить зависимости для wkhtmltopdf
+# Устанавливаем зависимости для wkhtmltopdf
 RUN apt-get update && \
     apt-get install -y \
         libxrender1 \
         libfontconfig1 \
         libxtst6 \
-        libjpeg62-turbo \
+        libjpeg-turbo8 \
         xfonts-75dpi \
         xfonts-base \
         wget \
-    && wget -q -O /tmp/wkhtmltox.deb "https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.6/wkhtmltox_0.12.6-1.buster_amd64.deb" \
+    && wget -q -O /tmp/wkhtmltox.deb "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb" \
     && dpkg -i /tmp/wkhtmltox.deb \
     && apt-get -y --no-install-recommends install -f \
     && rm -rf /var/lib/apt/lists/*
 
-# Установить библиотеку pdfkit для Python
-RUN pip install pdfkit
+# Устанавливаем необходимые Python-библиотеки
+RUN apt-get update && \
+    apt-get install -y \
+        python3 \
+        python3-pip \
+        python3-setuptools \
+        python3-wheel \
+        fontconfig \
+    && pip3 install python-telegram-bot pdfkit
 
-# Скопировать файлы приложения в Docker-контейнер
+# Копируем файлы проекта в Docker-контейнер
 WORKDIR /app
 COPY . /app
 
-# Установить переменную окружения PORT для приложения
+# Устанавливаем переменную окружения PORT для приложения
 ENV PORT 8080
 
-# Запустить сервер
-CMD ["python", "school1.py"]
+# Запускаем сервер
+CMD ["python3", "school.py"]
