@@ -33,4 +33,4 @@ COPY . /app
 ENV PORT 8080
 
 # Запускаем сервер
-CMD ["python3", "school.py"]
+CMD ["python3", "server.py"]
