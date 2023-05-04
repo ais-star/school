@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster
+FROM debian:buster-slim
 
 # Обновить пакетный менеджер и установить зависимости для wkhtmltopdf
 RUN apt-get update && \
