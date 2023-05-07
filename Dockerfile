@@ -18,4 +18,4 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY school.py .
-CMD [ "python", "./school.py" ]
+CMD [ "python", "school.py" ]
