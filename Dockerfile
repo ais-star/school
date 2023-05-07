@@ -27,4 +27,4 @@ COPY school.py /app/
 WORKDIR /app
 
 # Запуск приложения
-CMD ["python3", "school.py"]
+CMD ["python3", "school1.py"]
