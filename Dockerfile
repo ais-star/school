@@ -36,9 +36,8 @@ RUN pip3 install -r requirements.txt
 
 # Copy the application files
 COPY school1.py .
-
-RUN cp config.py /usr/local/lib/python3.8/dist-packages/telegram/ext && \
-    cp school1.db /app
+COPY config.py 
+COPY school1.db
 
 # Run the application
 CMD ["python3", "school1.py"]
