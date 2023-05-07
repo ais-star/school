@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
 RUN apt-get update && apt-get install -y \
+    fontconfig \
     libxrender1 \
     libfontconfig1 \
     libxtst6 \
