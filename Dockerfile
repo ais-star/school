@@ -13,3 +13,9 @@ RUN apt-get update && apt-get install -y \
     && dpkg -i /tmp/wkhtmltox.deb \
     && apt-get -y --no-install-recommends install -f \
     && rm -rf /var/lib/apt/lists/*
+RUN mkdir /app
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY school.py .
+CMD [ "python", "./school.py" ]
