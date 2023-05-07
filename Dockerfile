@@ -21,7 +21,7 @@ RUN wget -q -O /tmp/wkhtmltox.deb https://github.com/wkhtmltopdf/packaging/relea
 # Копирование файлов проекта
 COPY requirements.txt /app/
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
-COPY school.py /app/
+COPY school1.py /app/
 
 # Установка рабочей директории
 WORKDIR /app
