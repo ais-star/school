@@ -36,8 +36,8 @@ RUN pip3 install -r requirements.txt
 
 # Copy the application files
 COPY school1.py .
-COPY config.py 
-COPY school1.db
+COPY config.py .
+COPY school1.db .
 
 # Run the application
 CMD ["python3", "school1.py"]
