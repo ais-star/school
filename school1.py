@@ -38,7 +38,7 @@ async def start_handler(message: types.Message):
 async def class_chosen_handler(message: types.Message, state: FSMContext):
     class_name = message.text
     students = get_students(class_name)
-    await message.answer(f"Первый ученик: {students[0]}\nПрисутствует?", reply_markup=types.ReplyKeyboardMarkup(resize_keyboard=True).add("Да", "Нет"))
+    await message.answer(f"Первый ученик: {students[0]}\nПрисутствует?", reply_markup=types.ReplyKeyboardMarkup(resize_keyboard=True).add("Да", "Нет","Без причин","Болеет"))
     await state.update_data(students=students, index=0, class_name=class_name)
     await States.waiting_for_att.set()
 
@@ -58,7 +58,7 @@ async def att_handler(message: types.Message, state: FSMContext):
         await state.finish()
     else:
         index += 1
-        await message.answer(f"Следующий ученик: {students[index]}\nПрисутствует?", reply_markup=types.ReplyKeyboardMarkup(resize_keyboard=True).add("Да", "Нет"))
+        await message.answer(f"Следующий ученик: {students[index]}\nПрисутствует?", reply_markup=types.ReplyKeyboardMarkup(resize_keyboard=True).add("Да", "Нет","Без причин","Болеет"))
         await state.update_data(students=students, index=index, class_name=class_name)
         await States.waiting_for_att.set()
 def generate_pdf(class_name):
